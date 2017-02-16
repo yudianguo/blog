@@ -632,8 +632,8 @@ $(function() {
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/CentosApacheHttps/" itemprop="url">
-                  centos apache 设置https服务
+                <a class="post-title-link" href="/2017/01/11/MarkDown语法1/" itemprop="url">
+                  markdown使用
                 </a>
               
             
@@ -679,14 +679,14 @@ $(function() {
           
 
         
-		  	 <span id="/2017/01/11/CentosApacheHttps/"class="leancloud_visitors"  data-flag-title="centos apache 设置https服务">
+		  	 <span id="/2017/01/11/MarkDown语法1/"class="leancloud_visitors"  data-flag-title="markdown使用">
             &nbsp; | &nbsp; 阅读次数
             </span>
 		  
 
           
           
-             <span id="/2017/01/11/CentosApacheHttps/" class="leancloud_visitors" data-flag-title="centos apache 设置https服务">
+             <span id="/2017/01/11/MarkDown语法1/" class="leancloud_visitors" data-flag-title="markdown使用">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -710,10 +710,40 @@ $(function() {
       
         
           
-            <h5 id="centos-apache-设置https服务"><a href="#centos-apache-设置https服务" class="headerlink" title="centos apache 设置https服务"></a>centos apache 设置https服务</h5><p>1、安装软件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install mod_ssl openssl</div></pre></td></tr></table></figure></p>
-<p>2、生成签名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">sudo openssl genrsa -out ca.key 2048</div><div class="line"># 产生 CSR</div><div class="line">sudo openssl req -new -key ca.key -out ca.csr</div><div class="line"></div><div class="line"># 产生自我签署的金钥</div><div class="line">sudo openssl x509 -req -days 365 -in ca.csr -signkey ca.key -out ca.crt</div><div class="line"></div><div class="line"># 复制文件至正确位置</div><div class="line">sudo cp ca.crt /etc/pki/tls/certs</div><div class="line">sudo cp ca.key /etc/pki/tls/private/ca.key</div><div class="line">sudo cp ca.csr /etc/pki/tls/private/ca.csr</div><div class="line">#更新 Apache SSL 的配置文件</div><div class="line">sudo vim /etc/httpd/conf.d/ssl.conf</div><div class="line">#修改内容 SSLCertificateFile /etc/pki/tls/certs/ca.crt</div><div class="line">#修改内容 SSLCertificateKeyFile /etc/pki/tls/private/ca.key</div><div class="line">重启Apache</div><div class="line">sudo service httpd restart</div><div class="line">#使用https访问会看到默认页面 例：https://192.168.33.15/</div></pre></td></tr></table></figure></p>
-<p>3、设置虚拟主机<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">NameVirtualHost *:443</div><div class="line">&lt;VirtualHost *:443&gt;</div><div class="line">        SSLEngine on</div><div class="line">        SSLCertificateFile /etc/pki/tls/certs/ca.crt</div><div class="line">        SSLCertificateKeyFile /etc/pki/tls/private/ca.key</div><div class="line">        &lt;Directory /var/www/vhosts/yoursite.com/httpsdocs&gt;</div><div class="line">        AllowOverride All</div><div class="line">        &lt;/Directory&gt;</div><div class="line">        DocumentRoot /var/www/vhosts/yoursite.com/httpsdocs</div><div class="line">        ServerName yoursite.com</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure></p>
-<p><a href="https://wiki.centos.org/zh/HowTos/Https" target="_blank" rel="external">https://wiki.centos.org/zh/HowTos/Https</a></p>
+            <h5 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 一级标题</div><div class="line">## 二级标题</div><div class="line">### 三级标题</div><div class="line">#### 多少个#号就是多少级标题（*）级标题</div></pre></td></tr></table></figure>
+<h6 id="效果："><a href="#效果：" class="headerlink" title="效果："></a>效果：</h6><h5 id="MarkDown表格插入语法"><a href="#MarkDown表格插入语法" class="headerlink" title="MarkDown表格插入语法"></a>MarkDown表格插入语法</h5><h6 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">| 一个普通标题 | 一个普通标题 | 一个普通标题 |</div><div class="line">| ------| ------ | ------ |</div><div class="line">| 短文本 | 中等文本 | 稍微长一点的文本 |</div><div class="line">| 稍微长一点的文本 | 短文本 | 中等文本 |</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>一个普通标题</th>
+<th>一个普通标题</th>
+<th>一个普通标题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>短文本</td>
+<td>中等文本</td>
+<td>稍微长一点的文本</td>
+</tr>
+<tr>
+<td>稍微长一点的文本</td>
+<td>短文本</td>
+<td>中等文本</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">| 左对齐标题 | 右对齐标题 | 居中对齐标题 |</div><div class="line">| :------| ------: | :------: |</div><div class="line">| 短文本 | 中等文本 | 稍微长一点的文本 |</div><div class="line">| 稍微长一点的文本 | 短文本 | 中等文本 |</div></pre></td></tr></table></figure>
+<h5 id="语法说明"><a href="#语法说明" class="headerlink" title="语法说明"></a>语法说明</h5><ul>
+<li>|、-、:之间的多余空格会被忽略，不影响布局。</li>
+<li>默认标题栏居中对齐，内容居左对齐。</li>
+<li>-:表示内容和标题栏居右对齐，:-表示内容和标题栏居左对齐，:-:表示内容和标题栏居中对齐。</li>
+<li>内容和|之间的多余空格会被忽略，每行第一个|和最后一个|可以省略，-的数量至少有一个。</li>
+</ul>
+<hr>
+<blockquote>
+<p><a href="http://glgjing.github.io/blog/2015/04/03/markdown-biao-ge-yu-fa/" target="_blank" rel="external">http://glgjing.github.io/blog/2015/04/03/markdown-biao-ge-yu-fa/</a></p>
+</blockquote>
 
           
         
@@ -1025,8 +1055,8 @@ $(function() {
             
               
                 
-                <a class="post-title-link" href="/2017/01/11/MarkDown语法1/" itemprop="url">
-                  markdown使用
+                <a class="post-title-link" href="/2017/01/11/CentosApacheHttps/" itemprop="url">
+                  centos apache 设置https服务
                 </a>
               
             
@@ -1072,14 +1102,14 @@ $(function() {
           
 
         
-		  	 <span id="/2017/01/11/MarkDown语法1/"class="leancloud_visitors"  data-flag-title="markdown使用">
+		  	 <span id="/2017/01/11/CentosApacheHttps/"class="leancloud_visitors"  data-flag-title="centos apache 设置https服务">
             &nbsp; | &nbsp; 阅读次数
             </span>
 		  
 
           
           
-             <span id="/2017/01/11/MarkDown语法1/" class="leancloud_visitors" data-flag-title="markdown使用">
+             <span id="/2017/01/11/CentosApacheHttps/" class="leancloud_visitors" data-flag-title="centos apache 设置https服务">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1103,40 +1133,10 @@ $(function() {
       
         
           
-            <h5 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 一级标题</div><div class="line">## 二级标题</div><div class="line">### 三级标题</div><div class="line">#### 多少个#号就是多少级标题（*）级标题</div></pre></td></tr></table></figure>
-<h6 id="效果："><a href="#效果：" class="headerlink" title="效果："></a>效果：</h6><h5 id="MarkDown表格插入语法"><a href="#MarkDown表格插入语法" class="headerlink" title="MarkDown表格插入语法"></a>MarkDown表格插入语法</h5><h6 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">| 一个普通标题 | 一个普通标题 | 一个普通标题 |</div><div class="line">| ------| ------ | ------ |</div><div class="line">| 短文本 | 中等文本 | 稍微长一点的文本 |</div><div class="line">| 稍微长一点的文本 | 短文本 | 中等文本 |</div></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>一个普通标题</th>
-<th>一个普通标题</th>
-<th>一个普通标题</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>短文本</td>
-<td>中等文本</td>
-<td>稍微长一点的文本</td>
-</tr>
-<tr>
-<td>稍微长一点的文本</td>
-<td>短文本</td>
-<td>中等文本</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">| 左对齐标题 | 右对齐标题 | 居中对齐标题 |</div><div class="line">| :------| ------: | :------: |</div><div class="line">| 短文本 | 中等文本 | 稍微长一点的文本 |</div><div class="line">| 稍微长一点的文本 | 短文本 | 中等文本 |</div></pre></td></tr></table></figure>
-<h5 id="语法说明"><a href="#语法说明" class="headerlink" title="语法说明"></a>语法说明</h5><ul>
-<li>|、-、:之间的多余空格会被忽略，不影响布局。</li>
-<li>默认标题栏居中对齐，内容居左对齐。</li>
-<li>-:表示内容和标题栏居右对齐，:-表示内容和标题栏居左对齐，:-:表示内容和标题栏居中对齐。</li>
-<li>内容和|之间的多余空格会被忽略，每行第一个|和最后一个|可以省略，-的数量至少有一个。</li>
-</ul>
-<hr>
-<blockquote>
-<p><a href="http://glgjing.github.io/blog/2015/04/03/markdown-biao-ge-yu-fa/" target="_blank" rel="external">http://glgjing.github.io/blog/2015/04/03/markdown-biao-ge-yu-fa/</a></p>
-</blockquote>
+            <h5 id="centos-apache-设置https服务"><a href="#centos-apache-设置https服务" class="headerlink" title="centos apache 设置https服务"></a>centos apache 设置https服务</h5><p>1、安装软件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install mod_ssl openssl</div></pre></td></tr></table></figure></p>
+<p>2、生成签名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">sudo openssl genrsa -out ca.key 2048</div><div class="line"># 产生 CSR</div><div class="line">sudo openssl req -new -key ca.key -out ca.csr</div><div class="line"></div><div class="line"># 产生自我签署的金钥</div><div class="line">sudo openssl x509 -req -days 365 -in ca.csr -signkey ca.key -out ca.crt</div><div class="line"></div><div class="line"># 复制文件至正确位置</div><div class="line">sudo cp ca.crt /etc/pki/tls/certs</div><div class="line">sudo cp ca.key /etc/pki/tls/private/ca.key</div><div class="line">sudo cp ca.csr /etc/pki/tls/private/ca.csr</div><div class="line">#更新 Apache SSL 的配置文件</div><div class="line">sudo vim /etc/httpd/conf.d/ssl.conf</div><div class="line">#修改内容 SSLCertificateFile /etc/pki/tls/certs/ca.crt</div><div class="line">#修改内容 SSLCertificateKeyFile /etc/pki/tls/private/ca.key</div><div class="line">重启Apache</div><div class="line">sudo service httpd restart</div><div class="line">#使用https访问会看到默认页面 例：https://192.168.33.15/</div></pre></td></tr></table></figure></p>
+<p>3、设置虚拟主机<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">NameVirtualHost *:443</div><div class="line">&lt;VirtualHost *:443&gt;</div><div class="line">        SSLEngine on</div><div class="line">        SSLCertificateFile /etc/pki/tls/certs/ca.crt</div><div class="line">        SSLCertificateKeyFile /etc/pki/tls/private/ca.key</div><div class="line">        &lt;Directory /var/www/vhosts/yoursite.com/httpsdocs&gt;</div><div class="line">        AllowOverride All</div><div class="line">        &lt;/Directory&gt;</div><div class="line">        DocumentRoot /var/www/vhosts/yoursite.com/httpsdocs</div><div class="line">        ServerName yoursite.com</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure></p>
+<p><a href="https://wiki.centos.org/zh/HowTos/Https" target="_blank" rel="external">https://wiki.centos.org/zh/HowTos/Https</a></p>
 
           
         
